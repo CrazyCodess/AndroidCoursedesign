@@ -1,9 +1,11 @@
 package com.hhu.test1;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class test2 extends Activity {
 
@@ -11,6 +13,15 @@ public class test2 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test2);
+        TextView name=(TextView)findViewById(R.id.textView1);
+        TextView pass=(TextView)findViewById(R.id.textView2);
+        Intent intent=getIntent();
+        Bundle data=intent.getExtras();
+        String sname=data.getString("name");
+        String passw=data.getString("psw");
+        name.setText("用户名:"+sname);
+        pass.setText("密码:"+passw);
+
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.hhu.test1;
+package com.hhu.dayfour;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,43 +7,39 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
-public class test1 extends Activity {
+public class MusicPlayer extends Activity {
 
-    private Button b;
-    private EditText name;
-    private EditText psw;
+    private Button start=null;
+    private Button stop=null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test1);
-        b=(Button)findViewById(R.id.button1);
-        name=(EditText)findViewById(R.id.name);
-        psw=(EditText)findViewById(R.id.password);
-        b.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_music_player);
+        start=(Button)findViewById(R.id.start);
+        start.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
-                String str=name.getText().toString();
-                String pw=psw.getText().toString();
-                Bundle data=new Bundle();
-                data.putString("name",str);
-                data.putString("psw",pw);
-                Intent intent=new Intent(test1.this,test2.class);
-                intent.putExtras(data);
-                startActivity(intent);
+                startService(new Intent(MusicPlayer.this,MyService.class));
             }
         });
+        stop=(Button)findViewById(R.id.stop);
+        stop.setOnClickListener(new StopListener());
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_test1, menu);
+        getMenuInflater().inflate(R.menu.menu_music_player, menu);
         return true;
     }
-
+    class StopListener implements View.OnClickListener{
+        @Override
+        public void onClick(View v) {
+            stopService(new Intent(MusicPlayer.this,MyService.class));
+        }
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
