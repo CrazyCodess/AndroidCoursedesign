@@ -22,7 +22,7 @@ public class displayActivity extends ListActivity {
         Cursor c=helper.query();
         String[] from ={"_id","name","hobby"};
         int[] to={R.id.id,R.id.name,R.id.like};
-        SimpleCursorAdapter adapter=new SimpleCursorAdapter(this,R.layout.display,c,from,to);
+        final SimpleCursorAdapter adapter=new SimpleCursorAdapter(this,R.layout.display,c,from,to);
         ListView listView=getListView();
         listView.setAdapter(adapter);
         final AlertDialog.Builder builder=new AlertDialog.Builder(this);
@@ -40,9 +40,12 @@ public class displayActivity extends ListActivity {
                                 Cursor c=helper.query();
                                 String[] from ={"_id","name","hobby"};
                                 int[] to={R.id.id,R.id.name,R.id.like};
-                                SimpleCursorAdapter adapter=new SimpleCursorAdapter(getApplicationContext(),R.layout.display,c,from,to);
-                                ListView listView=getListView();
-                                listView.setAdapter(adapter);
+                                adapter.changeCursorAndColumns(c,from,to);
+                                //SimpleCursorAdapter adapter=new SimpleCursorAdapter(getApplicationContext(),R.layout.display,c,from,to);
+                                adapter.notifyDataSetChanged();
+                                /*ListView listView=getListView();
+                                listView.setAdapter(adapter);*/
+
                             }
                         }).setNegativeButton("否", new DialogInterface.OnClickListener() {
                     @Override
