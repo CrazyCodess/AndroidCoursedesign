@@ -15,3 +15,5 @@ start adbd
 在电脑cmd输入如下命令
 adb connect ip:port
 例如我的是 adb connect 192.169.191.2:5555
+
+####OSNews是抓取开源中国网页的一个实例。
