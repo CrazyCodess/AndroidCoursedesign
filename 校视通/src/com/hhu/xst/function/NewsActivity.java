@@ -18,7 +18,7 @@ import com.jereh.slidingdemo.R;
  */
 public class NewsActivity extends Activity {
 
-	private String url ;//= "http://news.qq.com/a/20161227/036497.htm";//"http://121.42.203.75:8080/xst/news/view/12";
+	private String url="www.baidu.com";//= "http://news.qq.com/a/20161227/036497.htm";//"http://121.42.203.75:8080/xst/news/view/12";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

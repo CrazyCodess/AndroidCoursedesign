@@ -45,7 +45,7 @@ public class NewsFragment extends Fragment {
 	ListView listView;
 	private String path = "http://www.oschina.net/news";
 	private com.hhu.xst.connectutil.ListAdapter adapter;	
-		//@SuppressLint("HandlerLeak")
+	@SuppressLint("HandlerLeak")
 	private Handler handler = new Handler(){
 		public void handleMessage(Message msg){
 			switch(msg.what){
