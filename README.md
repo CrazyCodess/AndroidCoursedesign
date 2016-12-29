@@ -5,10 +5,10 @@ OSNews是一个
 
 打开手机wifi连接到网络。使用已经拥有root权限的手机，下载终端模拟器，打开。
 输入以下命令
-su
-setprop service.adb.tcp.port 5555
-stop adbd
-start adbd
+*su
+*setprop service.adb.tcp.port 5555
+*stop adbd
+*start adbd
 
 点开wifi连接详情查看ip地址
 

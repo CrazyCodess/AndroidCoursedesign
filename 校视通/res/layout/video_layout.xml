@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 <!-- 容纳视频列表的布局文件 -->
     <ListView
-        android:id="@+id/newslist"
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     </ListView>

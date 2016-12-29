@@ -45,7 +45,6 @@ public class MainActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
 		listview = (ListView) this.findViewById(R.id.listview);
-		
 		new GetListData().execute(path);
 	}
 	
@@ -67,9 +66,18 @@ public class MainActivity extends Activity {
 					    Element articleElement = articleElements.get(i);
 					    Elements itembox=articleElement.select("div.main-info");
 					    
-					    Log.d("MSG", "66666666666666"+itembox.text());
+					    Elements imgitem=articleElement.select("div.thumb");
+					    
+					    String imgurl=imgitem.select("img").attr("src");
+					    if(imgurl.length()>0){
+					    	if(imgurl.charAt(0)!='h')
+					    	imgurl="http://www.oschina.net"+imgurl;
+					    }else imgurl="";
+					    
+					    Log.e("77777777777",imgurl);
 					    String url=		itembox.select("a.title").attr("href");
-					    Log.d("MSG", "9999999999999999999999999"+url);
+					    url="http://www.oschina.net"+url;
+					    
 					    Elements titleElement = itembox.select("a.title span");
 					    Elements summaryElement = itembox.select("div.sc");
 					    Elements timeElement = itembox.select("div.from");
@@ -85,7 +93,8 @@ public class MainActivity extends Activity {
 					    Log.i("summary", summary); 
 					    Log.i("postTime", postTime);
 					    
-					    Article article = new Article(title,summary,postTime);
+					    Article article = new Article(title,summary,postTime,imgurl);
+					    imgurl="";
 					    articleList.add(article);
 					 
 					}

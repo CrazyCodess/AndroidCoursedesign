@@ -18,12 +18,15 @@ import com.jereh.slidingdemo.R;
  */
 public class NewsActivity extends Activity {
 
-	private String url = "http://news.qq.com/a/20161227/036497.htm";//"http://121.42.203.75:8080/xst/news/view/12";
+	private String url ;//= "http://news.qq.com/a/20161227/036497.htm";//"http://121.42.203.75:8080/xst/news/view/12";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_news);
+		Intent intent=getIntent();
+		Bundle bundle=intent.getExtras();
+		url=bundle.getString("url");
 		WebView show = (WebView) findViewById(R.id.show);
 		WebSettings settings = show.getSettings(); 
 		 settings.setUseWideViewPort(true);  
