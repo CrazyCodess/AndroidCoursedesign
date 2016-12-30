@@ -16,7 +16,9 @@
 * 在电脑cmd输入如下命令
 * adb connect ip:port
 * 例如我的是 adb connect 192.169.191.2:5555
+
 ###校视通项目
+
 * 咨询页面实现了从开源中国网站http://www.oschina.net/news抓取了咨询列表里面的资讯然后填充到ListView中
 * 主要的类和方法是Jsoup里面提供的，网上有帮助文档
 * 主要代码如下：
