@@ -16,7 +16,9 @@
 * 在电脑cmd输入如下命令
 * adb connect ip:port
 * 例如我的是 adb connect 192.169.191.2:5555
+
 ###五天的任务说明
+
 * 第一天的项目是在day1文件夹中，主要是搭建环境并编写一个简单的HelloWorld
 * 第二天项目在UIdesign文件夹中，简单的UI设计
 * 第三天项目在test1文件夹中，主要是熟悉Activity的跳转和Intent的消息传递机制
