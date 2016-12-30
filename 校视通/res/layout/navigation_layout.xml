@@ -26,9 +26,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/biz_navigation_tab_pc" />
-
+            
             <TextView
-                android:id="@+id/login"
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:textColor="#ffd4d4d4"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/login0"
                 android:layout_width="45dp"
                 android:layout_height="25dp"
                 android:layout_marginLeft="30dp"
@@ -38,7 +48,7 @@
                 android:text="登录"
                 android:textSize="10dp" />
 
-           <!--  <Button
+            <Button
                 android:id="@+id/regist"
                 android:layout_width="45dp"
                 android:layout_height="25dp"
@@ -47,7 +57,8 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/shape"
                 android:text="注册"
-                android:textSize="10dp" /> -->
+                android:textSize="10dp" />
+               
             <!--
             <ImageView
                 android:id="@+id/qzone_btn"
@@ -234,9 +245,34 @@
                 android:textColor="#ffd4d4d4"
                 android:textSize="16sp" />
         </RelativeLayout>
+        
+         <RelativeLayout
+            android:id="@+id/item_6"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="14dp"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/img_6"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/biz_news_pread_update_divider_image" />
+
+            <TextView
+                android:id="@+id/TextView06"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/img_6"
+                android:text="退出登陆"
+                android:textColor="#ffd4d4d4"
+                android:textSize="16sp" />
+        </RelativeLayout>
+        
 
         <RelativeLayout
-            android:id="@+id/item_6"
+            android:id="@+id/item_7"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="14dp"

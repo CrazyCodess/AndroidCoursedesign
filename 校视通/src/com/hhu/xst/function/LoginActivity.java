@@ -2,9 +2,11 @@ package com.hhu.xst.function;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.hhu.xst.connectutil.DBHelper;
 import com.hhu.xst.connectutil.LandServer;
 import com.hhu.xst.main.MainActivity;
 import com.jereh.slidingdemo.R;
@@ -51,24 +54,49 @@ public class LoginActivity extends Activity {
 				} else if (password.isEmpty()) {
 					Toast.makeText(getApplicationContext(), "密码不能为空！", 8000);
 				} else {
-					final Handler handler = new Handler() {
-						public void handleMessage(Message msg) {
-							super.handleMessage(msg);
-							String str = (String) msg.obj;
-							System.out.println("服务器返回值："+str);
-							if ("true".equals(str)) {
-								Toast.makeText(getApplicationContext(), "登录成功",
-										8000).show();
-								Intent intent = new Intent(LoginActivity.this,
-										MainActivity.class);
-								startActivity(intent);
-							} else {
-								Toast.makeText(getApplicationContext(), "登录失败",
-										8000).show();
+					
+						DBHelper helper=new DBHelper(getApplicationContext());
+						Cursor c=helper.query();
+						//必须先把Cursor定位到第一行
+						c.moveToFirst();
+						int f=0;
+						while(c.moveToNext()) 
+						{ 
+							Log.e("table", c.getString(1));
+							if(c.getString(2).trim().equals(password.trim())){
+								
+								Toast.makeText(getApplicationContext(), "登陆成功！",
+				    				     Toast.LENGTH_SHORT).show();
+								
+								 Bundle bundle=new Bundle();
+					                bundle.putInt("status",1);
+					                bundle.putString("name",username);
+					                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+					                intent.putExtras(bundle);
+					                startActivity(intent);
+					                f=1;
+					                break;
+					                
+					                
+					                
 							}
+							
 						}
-					};
-					new Thread(new Runnable() {
+						if(f==0)
+						Toast.makeText(getApplicationContext(), "登陆失败！",
+		    				     Toast.LENGTH_SHORT).show();
+						
+						
+				/*		Log.e("column", c.getString(c.getColumnIndexOrThrow("name")));
+						if(password.equals(c.getString(c.getColumnIndexOrThrow("password")))){
+							Toast.makeText(getApplicationContext(), "登陆成功！", Toast.LENGTH_LONG);
+							}
+						else{
+								Toast.makeText(getApplicationContext(), "登陆失败！", Toast.LENGTH_LONG);
+							}*/
+						
+					}}});}}
+					/*new Thread(new Runnable() {
 						@Override
 						public void run() {
 							LandServer server = new LandServer();
@@ -83,8 +111,8 @@ public class LoginActivity extends Activity {
 					}).start();
 				}
 			}
-		});
-	}
+		});*/
+
 
 	//end
 //	@Override
@@ -97,4 +125,4 @@ public class LoginActivity extends Activity {
 //		}
 //		return super.onKeyDown(keyCode, event);
 //	}
-}
+

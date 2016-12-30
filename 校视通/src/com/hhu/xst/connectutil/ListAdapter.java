@@ -63,7 +63,7 @@ public class ListAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		
-		News_List newsList = getItem(position);
+		final News_List newsList = getItem(position);
 		View view;
 		ViewHolder viewHolder;
 		
@@ -74,6 +74,7 @@ public class ListAdapter extends BaseAdapter {
  			viewHolder.title = (TextView) view.findViewById(R.id.newsss_title);
 			viewHolder.postTime = (TextView) view.findViewById(R.id.newsss_postTime);
 			viewHolder.imge=(ImageView)view.findViewById(R.id.newsss_image);
+			viewHolder.layout=(LinearLayout)view.findViewById(R.id.newsss_Linear);
 			view.setTag(viewHolder);
 		} else {
 			view=convertView;
@@ -87,7 +88,20 @@ public class ListAdapter extends BaseAdapter {
 		viewHolder.title.setText(newsList.getTitle());
 		viewHolder.postTime.setText(newsList.getPostTime());
 		LinearLayout layout=(LinearLayout)view.findViewById(R.id.newsss_Linear);
-		layout.setOnClickListener(new MyClick(newsList));
+		//viewHolder.title.setOnClickListener(new MyClick(newsList));
+		layout.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				// TODO Auto-generated method stub
+				Bundle bundle =new Bundle();
+				bundle.putString("url", newsList.getUrl());
+				Intent intent=new Intent(ctx.getApplicationContext(),NewsActivity.class);
+				intent.putExtras(bundle);
+				ctx.startActivity(intent);
+			}
+		});
 		return view;
 	}
 
@@ -96,6 +110,7 @@ public class ListAdapter extends BaseAdapter {
 		//public TextView summary;
 		public TextView postTime;
 		public ImageView imge;
+		public LinearLayout layout;
 	}
 	
 	
@@ -141,27 +156,5 @@ public class ListAdapter extends BaseAdapter {
         }
    }
     
-    class MyClick implements View.OnClickListener{
-
-    	News_List newslist;
-    	public MyClick(News_List newslist){
-    		
-    	}
-		@Override
-		public void onClick(View v) {
-			// TODO Auto-generated method stub
-			switch(v.getId()){
-				case 0x7f060068:
-					Bundle bundle =new Bundle();
-					bundle.putString("url", newslist.getUrl());
-					Intent intent=new Intent(ctx,NewsActivity.class);
-					intent.putExtras(bundle);
-					ctx.startActivity(intent);
-					break;
-				default:break;
-			}
-		}
-    	
-    }
     
 }

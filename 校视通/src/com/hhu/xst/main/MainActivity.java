@@ -18,15 +18,18 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.hhu.xst.function.AboutXSTActivity;
 import com.hhu.xst.function.LoginActivity;
 import com.hhu.xst.function.MyNoteActivity;
 import com.hhu.xst.function.RegisterActivity;
 import com.hhu.xst.function.SearchActivity;
+import com.hhu.xst.notetool.ManagerNoteActivity;
 import com.hhu.xst.ui.ClassFragment;
 import com.hhu.xst.ui.NewsFragment;
 import com.hhu.xst.ui.XiaozuFragment;
@@ -49,6 +52,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private FragmentManager fragmentManager;
 	private FragmentTransaction transaction;
 	private RadioGroup radioGroup;
+	private Button btLogin,button06;
+	private Button	btRegister;
+	private TextView TextView06;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +64,22 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		// 隐藏状态栏
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+		
 		setContentView(R.layout.activity_main);
 		fragmentManager = getSupportFragmentManager();
 		radioGroup = (RadioGroup) findViewById(R.id.radioGroup1);
-		initSlidingMenu();
+		Intent intent=getIntent();
+		Bundle bundle=intent.getExtras();
+		
+		if(bundle!=null){
+			if(bundle.getInt("status")==1){
+				String name=bundle.getString("name");
+				initSlidingMenu(1,name);
+			}
+			else initSlidingMenu(0,null);
+		}else initSlidingMenu(0,null);
+		
+		
 		((RadioButton) radioGroup.findViewById(R.id.radio0)).setChecked(true);
 
 		transaction = fragmentManager.beginTransaction();
@@ -87,12 +104,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 							transaction.replace(R.id.content, sortFragment);
 							transaction.commit();
 						}
-						if (checkedId == R.id.radio2) {
+/*						if (checkedId == R.id.radio2) {
 							transaction = fragmentManager.beginTransaction();
 							Fragment personFragment = new XiaozuFragment();
 							transaction.replace(R.id.content, personFragment);
 							transaction.commit();
-						}
+						}*/
 						/*if (checkedId == R.id.radio4) {
 							transaction = fragmentManager.beginTransaction();
 							Fragment classFragment = new DirectFragment();
@@ -115,7 +132,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private ImageButton slidebutt;
 	private ImageButton searchbutt;
 
-	private void initSlidingMenu() {
+	private void initSlidingMenu(int status,String name) {
 		slidingMenu = new SlidingMenu(this);
 
 		slidingMenu.setMode(SlidingMenu.LEFT);
@@ -124,11 +141,11 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		slidingMenu.setShadowWidth(10);
 		slidingMenu.setBehindOffsetRes(R.dimen.sliding_menu_offset);// 设置偏离距离
 		slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);// 全屏模式，全屏滑动都可打开
-
-		Dianji();
+		
+		Dianji(status,name);
 	}
 
-	private void Dianji() {
+	private void Dianji(int status,String name) {
 		// TODO Auto-generated method stub
 	//btLogin = (Button) findViewById(R.id.login);
 		slidebutt = (ImageButton) findViewById(R.id.slidemn);
@@ -164,19 +181,87 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		/**
 		 * 点击获取不同操作
 		 */
-		// 登录
-//		btLogin.setOnClickListener(new OnClickListener() {
-//			@Override
-//			public void onClick(View arg0) {
-//				// TODO Auto-generated method stub
-//				Intent intent = new Intent(MainActivity.this,
-//						LoginActivity.class);
-//				startActivity(intent);
-//				finish();
-//
-//			}
-//		});
+		/*//退出登陆
+		button06=(Button)findViewById(R.id.button06);
+		button06.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				
+				Dianji(0,null);
+				initSlidingMenu(0,null);
 
+
+			}
+		});*/
+		
+		
+		/**
+		 * 退出登陆
+		 */
+		TextView06=(TextView)findViewById(R.id.TextView06);
+		TextView06.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Bundle bundle=new Bundle();
+                bundle.putInt("status",0);
+                bundle.putString("name",null);
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+				finish();	
+
+			}
+		});
+		
+		
+		
+		
+		
+		// 登录
+		btLogin=(Button)findViewById(R.id.login0);
+		 btLogin.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(MainActivity.this,
+						LoginActivity.class);
+				startActivity(intent);
+				finish();
+
+			}
+		});
+		 
+	
+		 btRegister=(Button)findViewById(R.id.regist);
+		 btRegister.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					Intent intent = new Intent(MainActivity.this,
+							RegisterActivity.class);
+					startActivity(intent);
+					finish();
+
+				}
+			});
+		 
+		 TextView username =(TextView)findViewById(R.id.username);
+		 if(status==1){
+			 
+			 btLogin.setVisibility(View.INVISIBLE);
+			 btRegister.setVisibility(View.INVISIBLE);
+			 username.setText(name);
+			 TextView hint=(TextView)findViewById(R.id.user_text);
+			 username.setVisibility(View.VISIBLE);
+			 hint.setVisibility(View.INVISIBLE);
+			 
+			 
+		 }else{
+			 ImageView imageview6=(ImageView)findViewById(R.id.img_6);
+			 imageview6.setVisibility(View.INVISIBLE);
+			 username.setVisibility(View.INVISIBLE);
+			 TextView06.setVisibility(View.INVISIBLE);
+		 }
 		RelativeLayout note = (RelativeLayout) findViewById(R.id.item_1);
 		note.setOnClickListener(new OnClickListener() {
 			@Override

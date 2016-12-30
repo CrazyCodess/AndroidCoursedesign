@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import com.hhu.xst.main.MainActivity;
@@ -18,7 +19,7 @@ import com.jereh.slidingdemo.R;
  */
 public class NewsActivity extends Activity {
 
-	private String url="www.baidu.com";//= "http://news.qq.com/a/20161227/036497.htm";//"http://121.42.203.75:8080/xst/news/view/12";
+	private String url = "www.baidu.com";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,14 @@ public class NewsActivity extends Activity {
 		Bundle bundle=intent.getExtras();
 		url=bundle.getString("url");
 		WebView show = (WebView) findViewById(R.id.show);
+
+		show.setWebViewClient(new WebViewClient() {
+	    public boolean shouldOverrideUrlLoading(WebView view, String url)
+	                            { //  重写此方法表明点击网页里面的链接还是在当前的webview里跳转，不跳到浏览器那边
+	                                    view.loadUrl(url);
+	                                    return true;
+	                            }
+	    });
 		WebSettings settings = show.getSettings(); 
 		 settings.setUseWideViewPort(true);  
 	     settings.setLoadWithOverviewMode(true);
@@ -40,8 +49,7 @@ public class NewsActivity extends Activity {
 	        // 为图片添加放大缩小功能  
 	     settings.setUseWideViewPort(true);  
 	  
-	        show.setInitialScale(70);   //100代表不缩放  
-	     
+	        show.setInitialScale(70);   //100代表不缩放
 		show.loadUrl(url );
 	}
 	@Override

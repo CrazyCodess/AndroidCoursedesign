@@ -17,7 +17,7 @@ public class DBUtil {
 	// 记事表
 	public static String TABLE_NAME_NOTE = "note";
 	public static String CREATE_TABLE = "create table  if not exists "
-			+ TABLE_NAME_NOTE + " (" + "id Integer Primary key,"
+			+ TABLE_NAME_NOTE + " (" + "id Integer Primary key AUTOINCREMENT,"
 			+ "title NVARCHAR(100)," + "content TEXT," + "created_at TEXT)";
 
 	// 添加记事

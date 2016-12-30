@@ -105,7 +105,7 @@
 				android:background="@drawable/shape"
 				android:singleLine="true"
 				android:layout_marginTop="20.0dip"
-				android:text="登录"
+				android:text="注册"
 				android:textColor="#ffffffff"
 				android:textSize="18.0sp" />
 		</LinearLayout>

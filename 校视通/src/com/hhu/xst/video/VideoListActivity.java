@@ -41,6 +41,7 @@ import com.jereh.slidingdemo.R;
 public class VideoListActivity extends Activity {
 	String url[] = {"http://lom.zqgame.com/v1/video/LOM_Promo~2.flv",
 			"http://7xpl2y.com1.z0.glb.clouddn.com/asdf.mp4",
+			"http://video.cztv.com/video/rzx/201208/15/1345010952759.mp4"
 			//"http://192.168.10.122:8080/xst/assets/player/asdf.mp4",
 			//"http://192.168.10.122:8080/xst/assets/player/6.mp4"
 			};
@@ -86,7 +87,7 @@ public class VideoListActivity extends Activity {
 		mListView = (ListView) findViewById(R.id.list);
 		mList = new ArrayList<VideoBean>();
 		for (int i = 0; i < 10; i++) {
-			mList.add(new VideoBean(url[i%2]));
+			mList.add(new VideoBean(url[i%3]));
 		}
 		mAdapter = new MAdapter(this);
 		mListView.setAdapter(mAdapter);
