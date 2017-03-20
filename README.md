@@ -1,6 +1,9 @@
-# AndroidCoursedesign
+﻿# AndroidCoursedesign
+
 移动互联网课程设计
-####OSNews是抓取开源中国网页的一个实例。
+
+###OSNews是抓取开源中国网页的一个实例。
+
 ###使用终端模拟器通过wifi连接androidstdio
 
 打开手机wifi连接到网络。使用已经拥有root权限的手机，下载终端模拟器，打开。

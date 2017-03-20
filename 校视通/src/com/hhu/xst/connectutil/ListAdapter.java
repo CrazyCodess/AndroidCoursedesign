@@ -100,6 +100,7 @@ public class ListAdapter extends BaseAdapter {
 				Intent intent=new Intent(ctx.getApplicationContext(),NewsActivity.class);
 				intent.putExtras(bundle);
 				ctx.startActivity(intent);
+				
 			}
 		});
 		return view;

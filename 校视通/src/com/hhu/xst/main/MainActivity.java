@@ -72,6 +72,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		Bundle bundle=intent.getExtras();
 		
 		if(bundle!=null){
+			
+			
 			if(bundle.getInt("status")==1){
 				String name=bundle.getString("name");
 				initSlidingMenu(1,name);
@@ -86,7 +88,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		Fragment fragment = new ClassFragment();
 		transaction.replace(R.id.content, fragment);
 		transaction.commit();
-
+		//radioGroup.check(id)
 		radioGroup
 				.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 					@Override
