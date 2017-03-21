@@ -1,4 +1,4 @@
-﻿#AndroidCoursedesign
+﻿# AndroidCoursedesign
 
 移动互联网课程设计
 
@@ -20,7 +20,7 @@
 * adb connect ip:port
 * 例如我的是 adb connect 192.169.191.2:5555
 
-###五天的任务说明
+### 五天的任务说明
 
 * 第一天的项目是在day1文件夹中，主要是搭建环境并编写一个简单的HelloWorld
 * 第二天项目在UIdesign文件夹中，简单的UI设计
@@ -28,7 +28,7 @@
 * 第四天项目在dayfour中，主要是音乐播放器的功能，可以以后作为音乐播放器的样例使用
 * 第五天项目在dayfive中，主要是数据库的操作，数据库的操作在DBHelper中实现，这是一个数据库操作的模板类，可以以后当做数据库操作的模板使用。
 
-###校视通项目
+### 校视通项目
 
 * 咨询页面实现了从开源中国网站http://www.oschina.net/news抓取了咨询列表里面的资讯然后填充到ListView中
 * 主要的类和方法是Jsoup里面提供的，网上有帮助文档http://www.open-open.com/jsoup/
