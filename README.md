@@ -34,33 +34,21 @@
 * 主要的类和方法是Jsoup里面提供的，网上有帮助文档http://www.open-open.com/jsoup/
 * # 获取的资讯列表的效果图：
 
-----------
 
-----------
 
  <img src="https://github.com/CrazyCodess/AndroidCoursedesign/blob/master/%E6%A0%A1%E8%A7%86%E9%80%9A/list.png?raw=true" width = "300" height = "1200" alt="获取的资讯列表" align=center />
 
-----------
 
-
-----------
 
 
 
 * # 浏览某一条资讯的效果图：
 
-----------
 
-
-----------
 
 
 <img src="https://github.com/CrazyCodess/AndroidCoursedesign/blob/master/%E6%A0%A1%E8%A7%86%E9%80%9A/webView.png?raw=true" width = "500" height = "1200" alt="某条资讯的效果图" align=center />
 
-----------
-
-
-----------
 
 
 
