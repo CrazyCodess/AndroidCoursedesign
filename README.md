@@ -32,7 +32,7 @@
 
 * 咨询页面实现了从开源中国网站http://www.oschina.net/news抓取了咨询列表里面的资讯然后填充到ListView中
 * 主要的类和方法是Jsoup里面提供的，网上有帮助文档http://www.open-open.com/jsoup/
-* # 获取的资讯列表的效果图：
+* # 获取资讯列表的效果图：
 
 
 
