@@ -36,7 +36,7 @@
 
 
 
- <img src="https://github.com/CrazyCodess/AndroidCoursedesign/blob/master/%E6%A0%A1%E8%A7%86%E9%80%9A/list.png?raw=true" width = "300" height = "1200" alt="获取的资讯列表" align=center />
+ <img src="https://github.com/CrazyCodess/AndroidCoursedesign/blob/master/%E6%A0%A1%E8%A7%86%E9%80%9A/list.png?raw=true" width = "500" height = "1200" alt="获取的资讯列表" align=center />
 
 
 
