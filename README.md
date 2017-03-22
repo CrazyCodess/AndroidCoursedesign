@@ -46,6 +46,15 @@
 
  <img src="https://github.com/CrazyCodess/AndroidCoursedesign/blob/master/%E6%A0%A1%E8%A7%86%E9%80%9A/webView.png?raw=true" width = "500" height = "1200" alt="某条资讯的效果图" align=center />
 
+
+----------
+
+
+----------
+
+
+
+
 * 主要代码如下：
 
 ```
